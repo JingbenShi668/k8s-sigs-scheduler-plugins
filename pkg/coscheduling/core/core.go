@@ -52,6 +52,7 @@ const (
 	Wait             Status = "Wait"
 )
 
+//PodGroupManager实现了该接口
 // Manager defines the interfaces for PodGroup management.
 type Manager interface {
 	PreFilter(context.Context, *corev1.Pod) error

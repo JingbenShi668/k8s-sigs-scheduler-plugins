@@ -38,6 +38,7 @@ import (
 	"sigs.k8s.io/scheduler-plugins/pkg/util"
 )
 
+//Coscheduling结构体
 // Coscheduling is a plugin that schedules pods in a group.
 type Coscheduling struct {
 	frameworkHandler framework.Handle
@@ -122,6 +123,7 @@ func (cs *Coscheduling) Less(podInfo1, podInfo2 *framework.QueuedPodInfo) bool {
 	return creationTime1.Before(creationTime2)
 }
 
+//Coscheduling在extention point位置实现了自定义逻辑
 // PreFilter performs the following validations.
 // 1. Whether the PodGroup that the Pod belongs to is on the deny list.
 // 2. Whether the total number of pods in a PodGroup is less than its `minMember`.

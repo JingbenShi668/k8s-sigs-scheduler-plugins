@@ -41,6 +41,7 @@ func NewPrometheus(address string, networkInterface string, timeRange time.Durat
 	}
 }
 
+//查询NodeBandWidth pressure
 func (p *PrometheusHandle) GetNodeBandwidthMeasure(node string)  (*model.Sample, error){
 	query := getNodeBandwidthQuery(node, p.networkInterface,p.timeRange);
 	res,err := p.query(query);
