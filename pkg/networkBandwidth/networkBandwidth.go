@@ -7,7 +7,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/klog/v2"
 	framework "k8s.io/kubernetes/pkg/scheduler/framework"
-	"sigs.k8s.io/k8s-sigs-scheduler-plugins/pkg/apis/config"
+	"sigs.k8s.io/scheduler-plugins/pkg/apis/config"
 	"time"
 )
 type NetworkBandwidth struct {

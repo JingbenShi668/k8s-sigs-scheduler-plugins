@@ -18,8 +18,18 @@ var(
 	AddToScheme = localSchemeBuilder.AddToScheme
 )
 
-func addKnownTypes(scheme *runtime.Scheme)  {
-	scheme.AddKnownTypes(SchemeGroupVersion, &NetworkBandwidthArgs{},)
+func addKnownTypes(scheme *runtime.Scheme)  error{
+	scheme.AddKnownTypes(SchemeGroupVersion,
+			&NetworkBandwidthArgs{},
+		)
+	return nil
+}
+
+func init() {
+	// We only register manually written functions here. The registration of the
+	// generated functions takes place in the generated files. The separation
+	// makes the code compile even when the generated files are missing.
+	localSchemeBuilder.Register(addKnownTypes)
 }
 
 
