@@ -1,3 +1,5 @@
+// +k8s:defaulter-gen=true
+
 package v1beta1
 
 //为NetworkBandwidth中的networkInterface和TimeRangeInMinutes设置默认值

@@ -4,6 +4,10 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +k8s:defaulter-gen=true
+
+//NetworkBandwidthArgs用于配置NetworkBandwidth plugin
 type NetworkBandwidthArgs struct {
 	metav1.TypeMeta `json:",inline"`
 
