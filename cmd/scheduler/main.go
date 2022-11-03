@@ -18,7 +18,7 @@ package main
 
 import (
 	"os"
-	"sigs.k8s.io/k8s-sigs-scheduler-plugins/pkg/networkBandwidth"
+	"sigs.k8s.io/scheduler-plugins/pkg/networkBandwidth"
 
 	"k8s.io/kubernetes/cmd/kube-scheduler/app"
 
