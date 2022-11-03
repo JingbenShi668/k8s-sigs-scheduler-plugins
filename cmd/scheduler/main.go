@@ -22,6 +22,8 @@ import (
 
 	"k8s.io/kubernetes/cmd/kube-scheduler/app"
 
+	"sigs.k8s.io/scheduler-plugins/pkg/apis/config/scheme"
+
 	// Ensure scheme package is initialized.
 	_ "sigs.k8s.io/scheduler-plugins/apis/config/scheme"
 )

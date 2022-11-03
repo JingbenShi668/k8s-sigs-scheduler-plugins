@@ -3,12 +3,13 @@ package networkBandwidth
 import (
 	"fmt"
 	"golang.org/x/net/context"
+	"time"
+
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/klog/v2"
 	framework "k8s.io/kubernetes/pkg/scheduler/framework"
 	"sigs.k8s.io/scheduler-plugins/pkg/apis/config"
-	"time"
 )
 type NetworkBandwidth struct {
 	handle     framework.Handle
