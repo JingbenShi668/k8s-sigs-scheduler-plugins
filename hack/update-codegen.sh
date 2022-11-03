@@ -35,9 +35,9 @@ CODEGEN_PKG=${CODEGEN_PKG:-$(cd "${SCRIPT_ROOT}"; ls -d -1 ./vendor/k8s.io/code-
 
 bash "${CODEGEN_PKG}"/generate-internal-groups.sh \
   "deepcopy,conversion,defaulter" \
-  k8s-sigs-scheduler-plugins/pkg/generated \
-  k8s-sigs-scheduler-plugins/pkg/apis \
-  k8s-sigs-scheduler-plugins/pkg/apis \
+  sigs.k8s.io/k8s-sigs-scheduler-plugins/pkg/generated \
+  sigs.k8s.io/k8s-sigs-scheduler-plugins/pkg/apis \
+  sigs.k8s.io/k8s-sigs-scheduler-plugins/pkg/apis \
   "config:v1beta1" \
   --go-header-file "${SCRIPT_ROOT}"/hack/boilerplate/boilerplate.generatego.txt
 
