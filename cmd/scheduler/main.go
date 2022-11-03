@@ -27,6 +27,7 @@ import (
 )
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
 	//注册custom plugins到scheduler framework
 	// Register custom plugins to the scheduler framework.
 	// Later they can consist of scheduler profile(s) and hence
