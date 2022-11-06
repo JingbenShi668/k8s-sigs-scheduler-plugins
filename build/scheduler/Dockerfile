@@ -24,7 +24,7 @@ RUN go env -w GOPROXY=https://goproxy.cn,direct
 RUN go env -w GO111MODULE=on
 RUN go env -w GOSUMDB=off
 
-RUN RELEASE_VERSION=${RELEASE_VERSION} make build-scheduler.$ARCHS
+RUN RELEASE_VERSION=${RELEASE_VERSION} make build-scheduler.${ARCHS}
 
 FROM $ARCHS/alpine:3.16
 
