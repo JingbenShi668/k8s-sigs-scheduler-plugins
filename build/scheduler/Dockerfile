@@ -28,7 +28,7 @@ RUN RELEASE_VERSION=${RELEASE_VERSION} make build-scheduler.$ARCH
 
 FROM amd64/alpine:3.16
 
-COPY --from=0 /home/data/go/src/sigs.k8s.io/scheduler-plugins/bin/kube-scheduler /bin/kube-scheduler
+COPY /home/data/go/src/sigs.k8s.io/scheduler-plugins/bin/kube-scheduler /bin/kube-scheduler
 
 WORKDIR /bin
 CMD ["kube-scheduler"]
