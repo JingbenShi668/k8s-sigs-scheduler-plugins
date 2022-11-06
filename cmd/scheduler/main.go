@@ -45,7 +45,7 @@ func main() {
 		//app.WithPlugin(podstate.Name, podstate.New),
 		//app.WithPlugin(qos.Name, qos.New),
 
-		app.WithPlugin(NetworkBandwidth.Name,NetworkBandwidth.New),
+		app.WithPlugin("networkBandwidth",NetworkBandwidth.New),
 
 	)
 
