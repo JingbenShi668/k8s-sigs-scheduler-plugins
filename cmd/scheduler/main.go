@@ -22,7 +22,7 @@ import (
 
 	"k8s.io/kubernetes/cmd/kube-scheduler/app"
 
-	"sigs.k8s.io/scheduler-plugins/pkg/apis/config/scheme"
+	_ "sigs.k8s.io/scheduler-plugins/pkg/apis/config/scheme"
 
 	// Ensure scheme package is initialized.
 	_ "sigs.k8s.io/scheduler-plugins/apis/config/scheme"
@@ -51,6 +51,8 @@ func main() {
 
 	)
 
+	logs.InitLogs()
+	defer logs.FlushLogs()
 	if err := command.Execute(); err!=nil {
 		os.Exit(1)
 	}
