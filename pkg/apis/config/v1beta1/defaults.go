@@ -2,7 +2,7 @@
 
 package v1beta1
 
-//为NetworkBandwidth中的networkInterface和TimeRangeInMinutes设置默认值
+//为NetworkBandwidth Instance设置默认值
 func SetDefaultNetworkBandwidthArgs(args *NetworkBandwidthArgs)  {
 	if args.Address == nil {
 		defaultAdress := "http://8.218.69.59:9090"
