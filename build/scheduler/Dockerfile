@@ -26,7 +26,7 @@ RUN go env -w GOSUMDB=off
 
 RUN RELEASE_VERSION=${RELEASE_VERSION} make build-scheduler.$ARCH
 
-FROM $ARCH/alpine:3.16
+FROM amd64/alpine:3.16
 
 COPY --from=0 /home/data/go/src/sigs.k8s.io/scheduler-plugins/bin/kube-scheduler /bin/kube-scheduler
 
