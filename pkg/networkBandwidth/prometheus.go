@@ -12,20 +12,19 @@ import (
 
 const(
 	//用于获取node network bandwidth的string template
-	nodeMeasureQueryTemplate = "sum_over_time(node_network_receive_bytes_total{kubernetes_node=\"%s\",device=\"%s\"}[%s])"
+	nodeMeasureQueryTemplate = "sum_over_time(node_network_receive_bytes_total{kubernetes_node=\"%s\"}[%s])"
 	//nodeMeasureQueryTemplate = "sum_over_time(node_network_receive_bytes_total{kubernetes_node=\"%s\",device=\"%s\"}[%s])"
 )
 
 //处理与networkplugin plugin的交互
 type PrometheusHandle struct {
-	networkInterface string
 	timeRange        time.Duration
 	address          string  //指向k8s cluster的Prometheus地址
 	api              v1.API  //存储Prometheus客户端
 }
 
 //创建PrometheusHandle实例
-func NewPrometheus(address string, networkInterface string, timeRange time.Duration)  *PrometheusHandle{
+func NewPrometheus(address string, timeRange time.Duration)  *PrometheusHandle{
 	client, err := api.NewClient(api.Config{
 		Address: address,
 	})
@@ -35,7 +34,6 @@ func NewPrometheus(address string, networkInterface string, timeRange time.Durat
 	}
 
 	return &PrometheusHandle{
-		networkInterface: networkInterface,
 		timeRange: timeRange,
 		address: address,
 		api: v1.NewAPI(client),
@@ -44,7 +42,7 @@ func NewPrometheus(address string, networkInterface string, timeRange time.Durat
 
 //查询NodeBandWidth pressure
 func (p *PrometheusHandle) GetNodeBandwidthMeasure(node string)  (*model.Sample, error){
-	query := getNodeBandwidthQuery(node, p.networkInterface,p.timeRange);
+	query := getNodeBandwidthQuery(node,p.timeRange);
 	res,err := p.query(query);
 	if err!=nil {
 		return nil, fmt.Errorf("[NetworkTraffic] Error querying prometheus: %w", err)
@@ -58,8 +56,8 @@ func (p *PrometheusHandle) GetNodeBandwidthMeasure(node string)  (*model.Sample,
 	return nodeMeasure[0],nil
 }
 
-func getNodeBandwidthQuery(node string, networkInterface string, timeRange time.Duration)  string{
-	return fmt.Sprintf(nodeMeasureQueryTemplate, node, networkInterface, timeRange);
+func getNodeBandwidthQuery(node string,timeRange time.Duration)  string{
+	return fmt.Sprintf(nodeMeasureQueryTemplate, node, timeRange);
 }
 
 func (p *PrometheusHandle) query(query string) (model.Value, error){

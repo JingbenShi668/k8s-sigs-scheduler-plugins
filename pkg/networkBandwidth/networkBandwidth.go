@@ -32,11 +32,11 @@ func New(obj runtime.Object, h framework.Handle) (framework.Plugin, error)  {
 		return nil, fmt.Errorf("[NetworkTraffic] want args to be of type NetworkTrafficArgs, got %T", obj);
 	}
 
-	klog.Infof("[NetworkTraffic] args received. NetworkInterface: %s; TimeRangeInMinutes: %d, Address: %s", args.NetworkInterface, args.TimeRangeInMinutes, args.Address);
+	klog.Infof("[NetworkTraffic] args received. TimeRangeInMinutes: %d, Address: %s", args.TimeRangeInMinutes, args.Address);
 
 	return &NetworkBandwidth{
 		handle: h,
-		prometheus: NewPrometheus(args.Address, args.NetworkInterface, time.Minute*time.Duration(args.TimeRangeInMinutes)),
+		prometheus: NewPrometheus(args.Address, time.Minute*time.Duration(args.TimeRangeInMinutes)),
 	},nil
 }
 
