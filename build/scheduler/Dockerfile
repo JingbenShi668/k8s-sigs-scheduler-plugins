@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #ARG ARCH
-FROM golang:1.17.11
+FROM golang:1.17.11 as stage0
 ARG ARCH
 
 WORKDIR /home/data/go/src/sigs.k8s.io/scheduler-plugins
@@ -27,8 +27,7 @@ RUN go env -w GOSUMDB=off
 RUN RELEASE_VERSION=${RELEASE_VERSION} make build-scheduler.$ARCH
 
 FROM amd64/alpine:3.16
-
-COPY --from=0 /home/data/go/src/sigs.k8s.io/scheduler-plugins/bin/kube-scheduler /bin/kube-scheduler
+COPY --from=stage0 /home/data/go/src/sigs.k8s.io/scheduler-plugins/bin/kube-scheduler /bin/kube-scheduler
 
 WORKDIR /bin
 CMD ["kube-scheduler"]
