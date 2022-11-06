@@ -13,20 +13,20 @@
 # limitations under the License.
 #ARG ARCH
 FROM golang:1.17.11
-ARG ARCHS
+ARG ARCH
 
 WORKDIR /home/data/go/src/sigs.k8s.io/scheduler-plugins
 COPY . .
-ARG ARCHS
+ARG ARCH
 ARG RELEASE_VERSION
 
 RUN go env -w GOPROXY=https://goproxy.cn,direct
 RUN go env -w GO111MODULE=on
 RUN go env -w GOSUMDB=off
 
-RUN RELEASE_VERSION=${RELEASE_VERSION} make build-scheduler.${ARCHS}
+RUN RELEASE_VERSION=${RELEASE_VERSION} make build-scheduler.$ARCH
 
-FROM $ARCHS/alpine:3.16
+FROM $ARCH/alpine:3.16
 
 COPY --from=0 /home/data/go/src/sigs.k8s.io/scheduler-plugins/bin/kube-scheduler /bin/kube-scheduler
 
