@@ -21,7 +21,7 @@ const name = "NetworkBandwidth"
 
 var _ = framework.ScorePlugin(&NetworkBandwidth{})
 
-func (n *NetworkBandwidth)  Name() string{
+func (n *NetworkBandwidth) Name() string{
 	return name;
 }
 

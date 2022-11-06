@@ -18,12 +18,10 @@ package main
 
 import (
 	"os"
+	NetworkBandwidth "sigs.k8s.io/scheduler-plugins/pkg/networkBandwidth"
 
 	"k8s.io/component-base/cli"
 	"k8s.io/kubernetes/cmd/kube-scheduler/app"
-
-	"sigs.k8s.io/scheduler-plugins/pkg/capacityscheduling"
-	"sigs.k8s.io/scheduler-plugins/pkg/networkBandwidth"
 
 	// Ensure scheme package is initialized.
 	_ "sigs.k8s.io/scheduler-plugins/apis/config/scheme"
@@ -47,7 +45,7 @@ func main() {
 		//app.WithPlugin(podstate.Name, podstate.New),
 		//app.WithPlugin(qos.Name, qos.New),
 
-		app.WithPlugin(networkBandwidth.Name,networkBandwidth.New),
+		app.WithPlugin(NetworkBandwidth.Name,NetworkBandwidth.New),
 
 	)
 
