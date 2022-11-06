@@ -18,18 +18,18 @@ package main
 
 import (
 	"os"
-	"sigs.k8s.io/scheduler-plugins/pkg/networkBandwidth"
 
+	"k8s.io/component-base/cli"
 	"k8s.io/kubernetes/cmd/kube-scheduler/app"
 
-	_ "sigs.k8s.io/scheduler-plugins/pkg/apis/config/scheme"
+	"sigs.k8s.io/scheduler-plugins/pkg/capacityscheduling"
+	"sigs.k8s.io/scheduler-plugins/pkg/networkBandwidth"
 
 	// Ensure scheme package is initialized.
 	_ "sigs.k8s.io/scheduler-plugins/apis/config/scheme"
 )
 
 func main() {
-	rand.Seed(time.Now().UnixNano())
 	//注册custom plugins到scheduler framework
 	// Register custom plugins to the scheduler framework.
 	// Later they can consist of scheduler profile(s) and hence
@@ -51,12 +51,6 @@ func main() {
 
 	)
 
-	logs.InitLogs()
-	defer logs.FlushLogs()
-	if err := command.Execute(); err!=nil {
-		os.Exit(1)
-	}
-
-	//code := cli.Run(command)
-	//os.Exit(code)
+	code := cli.Run(command)
+	os.Exit(code)
 }
