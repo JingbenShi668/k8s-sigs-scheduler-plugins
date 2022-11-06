@@ -37,7 +37,7 @@ type PodGroupReconciler struct {
 // +kubebuilder:rbac:groups=scheduling.sigs.k8s.io,resources=podgroups/status,verbs=get;update;patch
 // +kubebuilder:rbac:groups=scheduling.sigs.k8s.io,resources=podgroups/finalizers,verbs=update
 
-// Reconcile is part of the main kubernetes reconciliation loop which aims to
+// Reconcile is part of the TestImport kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
 // TODO(user): Modify the Reconcile function to compare the state specified by
 // the PodGroup object against the actual cluster state, and then

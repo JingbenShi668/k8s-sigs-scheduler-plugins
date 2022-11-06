@@ -8,10 +8,4 @@ func SetDefaultNetworkBandwidthArgs(args *NetworkBandwidthArgs)  {
 		defaultTime := int64(5)
 		args.TimeRangeInMinutes = &defaultTime
 	}
-
-	if args.NetworkInterface == nil || *args.NetworkInterface == "" {
-		netInterface := "test"
-		args.NetworkInterface = &netInterface
-	}
-
 }

@@ -13,6 +13,7 @@ import (
 const(
 	//用于获取node network bandwidth的string template
 	nodeMeasureQueryTemplate = "sum_over_time(node_network_receive_bytes_total{kubernetes_node=\"%s\",device=\"%s\"}[%s])"
+	//nodeMeasureQueryTemplate = "sum_over_time(node_network_receive_bytes_total{kubernetes_node=\"%s\",device=\"%s\"}[%s])"
 )
 
 //处理与networkplugin plugin的交互

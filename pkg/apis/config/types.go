@@ -9,7 +9,8 @@ type NetworkBandwidthArgs struct {
 	metav1.TypeMeta
 
 	Address string //Prometheus server的address
-	NetworkInterface string
 	TimeRangeInMinutes int64 //TimeRangeInMinutes为时长，聚合network metrics
 }
+
+
 

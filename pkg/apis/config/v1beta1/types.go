@@ -15,7 +15,6 @@ type NetworkBandwidthArgs struct {
 
 	//Prometheus server的address
 	Address            *string `json:"prometheusAddress,omitempty"`
-	NetworkInterface   *string `json:"network_interface,,omitempty"`
 	//TimeRangeInMinutes为时长，聚合network metrics
 	TimeRangeInMinutes *int64 `json:"timeRangeInMinutes,omitempty"`
 }

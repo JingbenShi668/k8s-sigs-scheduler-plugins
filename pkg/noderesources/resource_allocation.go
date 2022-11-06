@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// This file was copied from the main k/k repo and defaultResourcesToWeightMap was added.
+// This file was copied from the TestImport k/k repo and defaultResourcesToWeightMap was added.
 // See: https://github.com/kubernetes/kubernetes/blob/release-1.19/pkg/scheduler/framework/plugins/noderesources/resource_allocation.go
 
 package noderesources
